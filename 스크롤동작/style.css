@@ -1,0 +1,49 @@
+@import url('http://fonts.gooleapis.com/css2?family=Single+Day&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #efedd6;
+  font-family: 'Single Day', cursive;
+  display: flex; /*하위 태그들을 정렬*/
+  flex-direction: column; /*전체가로정렬*/
+  justify-content: center; /*가로방향정렬*/
+  align-items: center; /*세로방향정렬*/
+  overflow-x: hidden; /* 가로만 안보이게*/
+  margin: 0;
+}
+
+h1 {
+  margin: 10px;
+}
+
+/*박스 전체에 오른쪽으로 400% 이동*/
+.box {
+  background-color: steelblue;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 200px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+  transform: translateX(400%);
+  transition: transform 0.4s ease;
+}
+
+/*클래스 박수중에 짝수번째 적용*/
+.box:nth-of-type(even) {
+  transform: translateX(-400%);
+}
+
+.box.show {
+  transform: translateX(0);
+}
+
+.box h2 {
+  font-size: 45px;
+}
