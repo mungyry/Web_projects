@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트에서 사용</title>
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+  </head>
+  <body>
+    <h1>자바스크립트에서 사용</h1>
+    <div id="output"></div>
+    <script type="text/javascript">
+      const person = {
+        name: 'Joe',
+        'last Name': 'Miller',
+        car1: 'Mustang',
+        car2: 'F150',
+      };
+      let str1 = 'car';
+      let cnt = 1;
+
+      // 객체(object)의 값에 전근 방법 1. person.car1   2. person.car2
+      console.log(person[str1 + cnt]);
+      cnt++;
+      console.log(person[str1 + cnt]);
+
+      // myObj 객체 안에 있는 friends 키값에는 배열이 저장
+      const myObj = {
+        friends: [
+          {
+            firstName: '홍',
+            lastName: '길동',
+          },
+          {
+            firstName: '손',
+            lastName: '흥민',
+          },
+          {
+            firstName: '박',
+            lastName: '문기',
+          },
+          {
+            firstName: '박',
+            lastName: '지성',
+          },
+        ],
+      };
+
+      const users = myObj.friends; // 배열
+      let html = '';
+      for (let x in users) {
+        // html에 한명의 친구들의 성과 이름을 계속 더함
+        html +=
+          Number(x) +
+          1 +
+          ' . ' +
+          users[x].firstName +
+          ' ' +
+          users[x].lastName +
+          '<br>'; // br로 한명마다 띄움, html에는 문자열로 성, 이름, br태그가 들어감
+      }
+
+      // innerHTML은 문자열의 태그도 포함해서 이 태그 자식으로 넣음
+      document.getElementById('output').innerHTML = html;
+    </script>
+  </body>
+</html>
