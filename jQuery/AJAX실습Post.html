@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>jQuery AJAX 실습</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link ref="stylesheet" href="css/style.css" />
+    <!-- 인터넷에서 사용-->
+    <!-- <script src="js/jquery-3.6.0.min.js"></script> -->
+    <!-- 로걸에서 사용-->
+    <style>
+      body {
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f4f4;
+        line-height: 1.5em;
+      }
+      header {
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 4px solid black;
+        margin-bottom: 10px;
+      }
+      #container {
+        width: 90%;
+        margin: auto;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>jQuery AJAX POST</h1>
+    </header>
+    <div id="container">
+      <h3>포스트 추가</h3>
+      <form
+        action="https://jsonplaceholder.typicode.com/posts"
+        id="postForm"
+        method="post"
+      >
+        <input type="text" id="title" placeholder="제목" /><br />
+        <textarea id="body" cols="30" rows="10" placeholder="내용"></textarea
+        ><br />
+        <input type="submit" value="전송" />
+      </form>
+    </div>
+
+    <script>
+      $('#postForm').submit(function (e) {
+        // 전송버튼 눌렀을때 이벤트(submit)
+        e.preventDefault(); // 이벤트시 서버로 보내는 요청을 중지
+        // console.log('서버주소로 요청 안함');
+        let title = $('#title').val(); // 제목창의 내용
+        let body = $('#body').val(); // 바디창의 내용
+        // let url = 'https://jsonplaceholder.typicode.com/posts';
+        let url = $(this).attr('action'); // 폼의 액션 속성의 값(주소), attr Jquery의 메소드임
+        $.post(url, { title: title, body: body }).done(function (data) {
+          console.log('포스트 저장됨');
+          console.log(data);
+        });
+      });
+
+      // $.ajax({
+      //   method: 'GET', // HTTP 요청 방식(GET, POST)
+      //   url: 'https://jsonplaceholder.typicode.com/posts', // 서버의 URL 주소
+      //   dataType: 'json', // 서버에서 보내줄 데이터의 타입
+      // }).done(function (data) {
+      //   $.each(data, function (i, item) {
+      //     $('#results').append(`<h3>${item.title}</h3><p>${item.body}</p>`);
+      //   });
+      // });
+    </script>
+  </body>
+</html>

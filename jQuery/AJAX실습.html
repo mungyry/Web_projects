@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>jQuery AJAX 실습</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link ref="stylesheet" href="css/style.css" />
+    <!-- 인터넷에서 사용-->
+    <!-- <script src="js/jquery-3.6.0.min.js"></script> -->
+    <!-- 로걸에서 사용-->
+    <style>
+      body {
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f4f4;
+        line-height: 1.5em;
+      }
+      header {
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 4px solid black;
+        margin-bottom: 10px;
+      }
+      #container {
+        width: 90%;
+        margin: auto;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>jQuery AJAX</h1>
+    </header>
+    <div id="container">
+      <ul id="results"></ul>
+    </div>
+
+    <script>
+      $.ajax({
+        method: 'GET', // HTTP 요청 방식(GET, POST)
+        url: 'https://jsonplaceholder.typicode.com/posts', // 서버의 URL 주소
+        dataType: 'json', // 서버에서 보내줄 데이터의 타입
+      }).done(function (data) {
+        // HTTP 요청이 성공하면 요청한 데이터가 done() 메소드로 전달됨.
+        // console.log(data);
+        $.each(data, function (i, item) {
+          $('#results').append(`<h3>${item.title}</h3><p>${item.body}</p>`);
+        });
+      });
+    </script>
+  </body>
+</html>
